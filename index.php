@@ -2,35 +2,41 @@
 // показывать или нет выполненные задачи
 $show_complete_tasks = rand(0, 1);
 $index = 0;
-$project_massive = ["Входящие","Учеба","Работа","Домашние дела","Авто"];
+$project_massive = ['Входящие','Учеба','Работа','Домашние дела','Авто'];
 $num = count($project_massive);
  $tasks_info_mass = [
- 	['task' => 'Собеседование в IT компании',
+ 	[
+     'task' => 'Собеседование в IT компании',
 	 'date_complite' => '01.12.2019',
 	 'categories' => 'Работа',
 	 'success' => 'Нет' 
 	],
- 	['task' => 'Выполнить тестовое задание',
+ 	[
+     'task' => 'Выполнить тестовое задание',
 	  'date_complite' => '25.12.2019',
       'categories' => 'Работа',
       'success' => 'Нет'
   	],
- 	['task' => 'Сделать задание первого раздела',
+ 	[
+     'task' => 'Сделать задание первого раздела',
 	 'date_complite' => '21.12.2019',
 	 'categories' => 'Учеба',
 	 'success' => 'Да'
 	],
- 	['task' => 'Встреча с другом',
+ 	[
+     'task' => 'Встреча с другом',
 	 'date_complite' => '22.12.2019',
 	 'categories' => 'Входящие',
 	 'success' => 'Нет'
 	],
- 	['task' => 'Купить корм для кота',
+ 	[
+     'task' => 'Купить корм для кота',
 	 'date_complite' => 'Нет',
 	 'categories' => 'Домашние дела',
 	 'success' => 'Нет'
 	],
- 	['task' => 'Заказать пиццу',
+ 	[
+     'task' => 'Заказать пиццу',
 	 'date_complite' => 'Нет',
 	 'categories' => 'Домашние дела',
 	 'success' => 'Нет'
@@ -76,14 +82,13 @@ $num = count($project_massive);
                 <h2 class="content__side-heading">Проекты</h2>
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-                    <?php while ($index<$num): ?>
+                    <?php foreach ($project_massive as $project): ?>
                         <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?=$project_massive[$index] ?> </a>
+                            <a class="main-navigation__list-item-link" href="#"><?=$project ?> </a>
                             <span class="main-navigation__list-item-count">0</span>
                         </li>
-                    <?php $index++;?>
                     </ul>
-                    <?php endwhile;?>
+                    <?php endforeach;?>
                 </nav>
 
                 <a class="button button--transparent button--plus content__side-button"
@@ -116,9 +121,9 @@ $num = count($project_massive);
                 </div>
 
                 <table class="tasks">
-                <?php foreach ($tasks_info_mass as $key => $value): ?>
+                  <?php foreach ($tasks_info_mass as $key => $value): ?>
                     <?php if (($value['success']=='Да')&($show_complete_tasks) == 1):?>                   
-                    <tr class="tasks__item task task--completed">
+                      <tr class="tasks__item task task--completed">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
@@ -144,7 +149,7 @@ $num = count($project_massive);
                             </label>
                         </td>
                 	<?php elseif ($value['success']=='Нет'): ?>                           
-                 	<tr class="tasks__item task ">
+                 	  <tr class="tasks__item task ">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
@@ -169,7 +174,7 @@ $num = count($project_massive);
                                 <span class="checkbox__text"><?=$value['success'];?></span>
                             </label>
                         </td> 
-                    </tr>
+                      </tr>
                 	<?php endif;?>
                 <?php endforeach;?>
                     <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
