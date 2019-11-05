@@ -41,7 +41,16 @@ $num = count($project_massive);
 	 'categories' => 'Домашние дела',
 	 'success' => 'Нет'
 	]
- ] 
+ ] ;
+function get_count_task($tasks_info_mass,$project) {
+  $count_task = 0;
+  foreach ($tasks_info_mass as $task => $value) {
+    if ($value['categories'] == $project) {
+    $count_task++;
+   }
+  }
+  return $count_task;
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -85,7 +94,7 @@ $num = count($project_massive);
                     <?php foreach ($project_massive as $project): ?>
                         <li class="main-navigation__list-item">
                             <a class="main-navigation__list-item-link" href="#"><?=$project ?> </a>
-                            <span class="main-navigation__list-item-count">0</span>
+                            <span class="main-navigation__list-item-count"> <?php print(get_count_task($tasks_info_mass,$project)) ?></span>
                         </li>
                     </ul>
                     <?php endforeach;?>
