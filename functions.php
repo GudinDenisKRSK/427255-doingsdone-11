@@ -24,4 +24,10 @@ function include_template($name, $data) {
 
     return $result;
 }
+function getCountHourOfDeadLine ($date_complite) {
+$datenow = time();
+$date_complite=strtotime($date_complite);    
+$dateofdeadline = floor((($datenow-$date_complite))/3600); 
+return $dateofdeadline;
+} 
 ?>
