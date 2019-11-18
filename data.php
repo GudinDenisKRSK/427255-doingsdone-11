@@ -7,7 +7,7 @@ $num = count($project_massive);
  $tasks_info_mass = [
  	[
      'task' => 'Собеседование в IT компании',
-	 'date_complite' => '01.12.2019',
+	 'date_complite' => '01.12.2017',
 	 'categories' => 'Работа',
 	 'success' => 'Нет' 
 	],

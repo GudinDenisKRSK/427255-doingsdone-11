@@ -44,11 +44,11 @@
                 <table class="tasks">
                   <?php foreach ($tasks_info_mass as $key => $value): ?>
                     <?php if (($value['success']=='Да')&($show_complete_tasks) == 1):?>                   
-                      <tr class="tasks__item task task--completed">
+                      <tr class="tasks__item task task--completed <?=(getCountHourOfDeadLine($value['date_complite']))<=24 ? '' :'task--important' ?>">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"> <?=htmlspecialchars($value['task']);?> </span>
+                                <span class="checkbox__text"> <?=htmlspecialchars($value['task']);?></span>
                             </label>
                         </td>
                           <td class="task__select">
@@ -70,7 +70,7 @@
                             </label>
                         </td>
                 	<?php elseif ($value['success']=='Нет'): ?>                           
-                 	  <tr class="tasks__item task ">
+                 	  <tr class="tasks__item task <?=(getCountHourOfDeadLine($value['date_complite']))<=24 ? '' :'task--important' ?> ">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
