@@ -1,13 +1,26 @@
 <?
 function getCountTask($tasks_info_mass, $project) {
   $count_task = 0;
-  foreach ($tasks_info_mass as $task => $value) {
-    if ($value['categories'] == $project) {
+  foreach ($tasks_info_mass as $task) {
+    if ($task['project_name'] == $project) {
       $count_task++;
    }
   }
   return $count_task;
 }
+function convertStatusTask ($status) {
+	if ($status == 0)
+		$result = 'Нет';
+	else $result = 'Да';
+
+	return $result;
+	}
+function convertDateTask ($time) {
+	$time = strtotime($time);
+
+	return date('d.m.Y',$time);
+	}
+	
 function include_template($name, $data) {
     $name = 'templates/' . $name;
     $result = '';

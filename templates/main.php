@@ -5,8 +5,8 @@
                     <ul class="main-navigation__list">
                     <?php foreach ($project_massive as $project): ?>
                         <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?=htmlspecialchars($project) ?> </a>
-                            <span class="main-navigation__list-item-count"> <?=htmlspecialchars(getCountTask($tasks_info_mass, $project))?></span>
+                            <a class="main-navigation__list-item-link" href="#"><?=htmlspecialchars($project['project_name']); ?> </a>
+                            <span class="main-navigation__list-item-count"> <?=htmlspecialchars(getCountTask($tasks_info_mass, $project['project_name']));?></span>
                         </li>
                     </ul>
                     <?php endforeach;?>
@@ -43,56 +43,56 @@
 
                 <table class="tasks">
                   <?php foreach ($tasks_info_mass as $key => $value): ?>
-                    <?php if (($value['success']=='Да')&($show_complete_tasks) == 1):?>                   
-                      <tr class="tasks__item task task--completed <?=(getCountHourOfDeadLine($value['date_complite']))<=24 ? '' :'task--important' ?>">
+                    <?php if (($value['status']== 1)&($show_complete_tasks) == 1):?>                   
+                      <tr class="tasks__item task task--completed <?=(getCountHourOfDeadLine($value['deadline_at']))<=24 ? '' :'task--important' ?>">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"> <?=htmlspecialchars($value['task']);?></span>
+                                <span class="checkbox__text"> <?=htmlspecialchars($value['task_name']);?></span>
                             </label>
                         </td>
                           <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?=htmlspecialchars($value['date_complite']);?></span>
+                                <span class="checkbox__text"><?=htmlspecialchars(convertDateTask($value['deadline_at']));?></span>
                             </label>
                         </td>
                           <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?=htmlspecialchars($value['categories']);?></span>
+                                <span class="checkbox__text"><?=htmlspecialchars($value['project_name']);?></span>
                             </label>
                         </td>
                           <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?=htmlspecialchars($value['success']);?></span>
+                                <span class="checkbox__text"><?=htmlspecialchars(convertStatusTask($value['status']));?></span>
                             </label>
                         </td>
-                	<?php elseif ($value['success']=='Нет'): ?>                           
-                 	  <tr class="tasks__item task <?=(getCountHourOfDeadLine($value['date_complite']))<=24 ? '' :'task--important' ?> ">
+                	<?php elseif ($value['status']==0): ?>                           
+                 	  <tr class="tasks__item task <?=(getCountHourOfDeadLine($value['deadline_at']))<=24 ? '' :'task--important' ?> ">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"> <?=htmlspecialchars($value['task']);?> </span>
+                                <span class="checkbox__text"> <?=htmlspecialchars($value['task_name']);?> </span>
                             </label>
                         </td>
                           <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?=htmlspecialchars($value['date_complite']);?></span>
+                                <span class="checkbox__text"><?=htmlspecialchars(convertDateTask($value['deadline_at']));?></span>
                             </label>
                         </td>
                           <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?=htmlspecialchars($value['categories']);?></span>
+                                <span class="checkbox__text"><?=htmlspecialchars($value['project_name']);?></span>
                             </label>
                         </td>
                           <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?=htmlspecialchars($value['success']);?></span>
+                                <span class="checkbox__text"><?=htmlspecialchars(convertStatusTask($value['status']));?></span>
                             </label>
                         </td> 
                       </tr>
