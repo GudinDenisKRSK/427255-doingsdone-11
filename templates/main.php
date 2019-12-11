@@ -66,7 +66,7 @@
                           <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?=htmlspecialchars(convertStatusTask($value['status']));?></span>
+                                <span class="checkbox__text"><?=htmlspecialchars( $value['status'] == 1 ? 'Да' : 'Нет' );?></span>
                             </label>
                         </td>
                 	<?php elseif ($value['status']==0): ?>                           
@@ -92,7 +92,7 @@
                           <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?=htmlspecialchars(convertStatusTask($value['status']));?></span>
+                                <span class="checkbox__text"><?=htmlspecialchars($value['status'] == 1 ? 'Да' : 'Нет');?></span>
                             </label>
                         </td> 
                       </tr>

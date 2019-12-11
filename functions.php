@@ -8,13 +8,13 @@ function getCountTask($tasks_info_mass, $project) {
   }
   return $count_task;
 }
-function convertStatusTask ($status) {
-	if ($status == 0)
-		$result = 'Нет';
-	else $result = 'Да';
 
-	return $result;
-	}
+function db_fetch_data($con, $sql) {
+$result = mysqli_query($con,$sql);
+$data = mysqli_fetch_all($result,MYSQLI_ASSOC);
+return $data;
+}
+
 function convertDateTask ($time) {
 	$time = strtotime($time);
 

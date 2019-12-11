@@ -9,10 +9,8 @@ print("Ошибка подключения: " . mysqli_connect_error());
 else {
 $sql_get_project = "SELECT project_name FROM project WHERE user_id = '1';";
 $sql_get_tasks = "SELECT task_name,deadline_at,file_task,status,project_name FROM task,project where project_id = project.id;";
-$result = mysqli_query($con,$sql_get_project);
-$project_massive = mysqli_fetch_all($result,MYSQLI_ASSOC);
-$result = mysqli_query($con,$sql_get_tasks);
-$tasks_info_mass = mysqli_fetch_all($result,MYSQLI_ASSOC);
+$tasks_info_mass = db_fetch_data($con,$sql_get_tasks);
+$project_massive=db_fetch_data($con,$sql_get_project);
 // выполнение запросов
 } 
  $page_content = include_template('main.php', [
